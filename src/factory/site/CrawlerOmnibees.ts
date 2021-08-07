@@ -3,7 +3,7 @@ import { CrawlerFactoryInterface } from "../CrawlerFactoryInterface";
 
 export class Omnibees implements CrawlerFactoryInterface {
     result(): CrawlerEntity {
-        throw new Error("Method not implemented.");
+        return new CrawlerEntity()
     }
 
     serch() {

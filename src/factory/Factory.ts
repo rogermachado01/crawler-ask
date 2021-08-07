@@ -1,6 +1,8 @@
+import { Injectable } from "@nestjs/common";
 import { CrawlerFactoryInterface } from "./CrawlerFactoryInterface";
 import { Omnibees } from "./site/CrawlerOmnibees";
 
+@Injectable()
 export class CrawlerFactory {
 
     crawler: Map<string, CrawlerFactoryInterface> = new Map()

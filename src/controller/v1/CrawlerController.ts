@@ -12,6 +12,7 @@ export class CrawlerController {
 
   @Post('search')
   search(@Body() createCrawlerDTO: CreateCrawlerDTO) {
+    console.log(createCrawlerDTO)
     return this.crawlerService.search(createCrawlerDTO);
   }
 
