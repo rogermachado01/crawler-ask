@@ -8,6 +8,6 @@ export class CrawlerService {
   factory: CrawlerFactory
   
   search(crawlerDTO: CreateCrawlerDTO) {
-    return this.factory.init(crawlerDTO.url).result();
+    return this.factory.init(crawlerDTO);
   }
 }

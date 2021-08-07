@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { CrawlerFactoryENUM } from 'src/entities/Crawler';
 export class CreateCrawlerDTO {
     @IsString({
         message: 'CHECKIN is not a STRING type',
@@ -14,7 +15,7 @@ export class CreateCrawlerDTO {
 
     @IsOptional()
     @IsString({
-        message: 'URL is not a STRING type',
+        message: 'TYPE is not a STRING type',
     })
-    url?: string;
+    type: CrawlerFactoryENUM;
 }

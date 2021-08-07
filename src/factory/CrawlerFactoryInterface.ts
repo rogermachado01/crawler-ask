@@ -1,6 +1,7 @@
+import { CreateCrawlerDTO } from "src/dto/CreateCrawlerDTO";
 import { CrawlerEntity } from "src/entities/Crawler";
 
 export interface CrawlerFactoryInterface {
-    serch(): string
-    result(): CrawlerEntity
+    data: CrawlerEntity
+    search(createCrawler: CreateCrawlerDTO): CrawlerEntity
 }

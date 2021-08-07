@@ -1,6 +1,5 @@
-
 export class CrawlerEntity {
-    CrawlerItems: CrawlerItem[]
+    crawlerItems: CrawlerItem[]
 }
 
 class CrawlerItem {
@@ -8,4 +7,8 @@ class CrawlerItem {
     description: string // Room description 
     price: string // Room daily price 
     image: string // Room main photo
+}
+
+export enum CrawlerFactoryENUM {
+    'OMNIBEES'= 'OMNIBEES'
 }
