@@ -1,4 +1,5 @@
 import { Injectable } from "@nestjs/common";
+import { plainToClass } from "class-transformer";
 import { CreateCrawlerDTO } from "src/dto/CreateCrawlerDTO";
 import { CrawlerEntity, CrawlerFactoryENUM } from "src/entities/Crawler";
 import { CrawlerFactoryInterface } from "./CrawlerFactoryInterface";
@@ -16,13 +17,17 @@ export class CrawlerFactory {
     }
 
     init(createCrawler: CreateCrawlerDTO) {
-        this.crawlerDTO = createCrawler
+        this.crawlerDTO = plainToClass(CreateCrawlerDTO, createCrawler);
         this.crawler = this.crawlerMap.get(this.crawlerDTO.type ?? CrawlerFactoryENUM.OMNIBEES)
         return this.result()
     }
 
-    result(): CrawlerEntity {
-        this.crawler.search(this.crawlerDTO)
+    async result(): Promise<CrawlerEntity[]> {
+        try {
+            await this.crawler.execute(this.crawlerDTO)
+        } catch (err) {
+            throw new Error(err);
+        }
         return this.crawler.data
     }
 }

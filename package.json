@@ -1,8 +1,8 @@
 {
   "name": "crawler-ask",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Roger Machado crawler test",
+  "author": "Roger Machado",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -27,6 +27,8 @@
     "@nestjs/platform-express": "^8.0.0",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
+    "date-fns": "^2.23.0",
+    "puppeteer": "^10.2.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0"
@@ -38,6 +40,7 @@
     "@types/express": "^4.17.13",
     "@types/jest": "^26.0.24",
     "@types/node": "^16.0.0",
+    "@types/puppeteer": "^5.4.4",
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^4.28.2",
     "@typescript-eslint/parser": "^4.28.2",
