@@ -1,11 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { CrawlerFactoryENUM } from './entities/Crawler';
 import { CrawlerFactory } from './factory/Factory';
+import { Omnibees } from './factory/site/CrawlerOmnibees';
 import { CrawlerService } from './service/CrawlerService';
 
 const crawlerDTOMock = () => {
   return {
     "checkin": "2021-09-01",
-    "checkout": "2021-09-03"
+    "checkout": "2021-09-03",
+    "type": null
   }
 }
 
@@ -18,23 +21,24 @@ const crawlerEntityMock = async () => {
   }]
 }
 
-describe('CrawlerService', () => {
-  let sut: CrawlerService;
-  let factory: CrawlerFactory;
-
+describe('CrawlerFactory', () => {
+  let sut: CrawlerFactory;
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [CrawlerService, CrawlerFactory],
+      providers: [CrawlerFactory, Omnibees],
     }).compile();
 
-    sut = module.get<CrawlerService>(CrawlerService);
-    factory = module.get<CrawlerFactory>(CrawlerFactory)
+    sut = module.get<CrawlerFactory>(CrawlerFactory)
   });
 
-  it('should call factory result', async () => {
-    jest.spyOn(factory, 'result').mockImplementationOnce(async () => await crawlerEntityMock())
-    const result = jest.spyOn(factory, 'result')
-    sut.search(crawlerDTOMock())
-    expect(result).toBeCalled()
+  it('should execute a OMNIBEES crawler', async () => {
+    const dto = crawlerDTOMock()
+    sut.crawler = sut.crawlerMap.get(dto.type ?? CrawlerFactoryENUM.OMNIBEES)
+    jest.spyOn(sut.crawler, 'execute').mockImplementationOnce(async () => await new Promise<void>((res)=> res()) )
+    const result = jest.spyOn(sut.crawler, 'execute')
+    await sut.init(dto)
+    
+    expect(result).toBeCalledTimes(1)
   });
+
 });

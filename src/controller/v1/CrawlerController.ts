@@ -6,11 +6,11 @@ import {
 import { CrawlerService } from '../../service/CrawlerService';
 import { CreateCrawlerDTO } from '../../dto/CreateCrawlerDTO';
 
-@Controller('crawler')
+@Controller('search')
 export class CrawlerController {
   constructor(private readonly crawlerService: CrawlerService) {}
 
-  @Post('search')
+  @Post()
   search(@Body() createCrawlerDTO: CreateCrawlerDTO) {
     return this.crawlerService.search(createCrawlerDTO);
   }

@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { CrawlerFactory } from 'src/factory/Factory';
+import { CrawlerFactory } from '../factory/Factory';
 import { CreateCrawlerDTO } from '../dto/CreateCrawlerDTO';
 
 @Injectable()

@@ -1,5 +1,5 @@
-import { CreateCrawlerDTO } from "src/dto/CreateCrawlerDTO";
-import { CrawlerEntity } from "src/entities/Crawler";
+import { CreateCrawlerDTO } from "../dto/CreateCrawlerDTO";
+import { CrawlerEntity } from "../entities/Crawler";
 
 export interface CrawlerFactoryInterface {
     data: CrawlerEntity[]

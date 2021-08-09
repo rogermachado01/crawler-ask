@@ -1,7 +1,7 @@
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { plainToClass } from "class-transformer";
-import { CreateCrawlerDTO } from "src/dto/CreateCrawlerDTO";
-import { CrawlerEntity, CrawlerFactoryENUM } from "src/entities/Crawler";
+import { CreateCrawlerDTO } from "../dto/CreateCrawlerDTO";
+import { CrawlerEntity, CrawlerFactoryENUM } from "../entities/Crawler";
 import { CrawlerFactoryInterface } from "./CrawlerFactoryInterface";
 import { Omnibees } from "./site/CrawlerOmnibees";
 
